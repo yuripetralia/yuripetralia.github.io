@@ -62,16 +62,17 @@ h3 {
     width: 90%;
     max-width: 800px;
     z-index: 1000;
-    /* Transition for all properties, with a specific override for background-color */
+    /* Transition for all properties, background and border delayed to the very end */
     transition:
         transform 0.8s cubic-bezier(0.77, 0, 0.175, 1),
         top 0.8s cubic-bezier(0.77, 0, 0.175, 1),
         left 0.8s cubic-bezier(0.77, 0, 0.175, 1),
         width 0.8s cubic-bezier(0.77, 0, 0.175, 1),
         height 0.8s cubic-bezier(0.77, 0, 0.175, 1),
-        background-color 0.4s ease 0.6s;
-    /* Delayed background-color */
+        background-color 0.2s ease 0.75s,
+        border-color 0.2s ease 0.75s;
     background-color: transparent;
+    border-right: 1px solid transparent;
 }
 
 .header-inner {
