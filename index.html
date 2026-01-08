@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HD-Dataset | Project Landing Page</title>
-    <meta name="description" content="A modern project landing page for a scientific dataset publication.">
+    <meta name="description"
+        content="A modern project landing page for a scientific dataset publication with a dynamic scrolling transition.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,55 +19,57 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="light-mode">
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <div class="logo">HD-<span>Dataset</span></div>
-            <p class="project-tagline">High-Dimensional Experimental Physics Inference & Collection</p>
-        </div>
-
-        <nav class="sidebar-nav">
-            <ul>
-                <li><a href="#hero" class="active">Welcome</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#abstract">Abstract</a></li>
-                <li><a href="#methodology">Methodology</a></li>
-                <li><a href="#results">Results</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#citation">Citation</a></li>
-            </ul>
-        </nav>
-
-        <div class="sidebar-footer">
-            <div class="external-links">
-                <a href="#" title="Paper PDF">📄 Paper</a>
-                <a href="#" title="Dataset Link">💾 Data</a>
-                <a href="#" title="GitHub Repo">💻 Code</a>
+<body class="light-mode init-page">
+    <!-- The Sidebar/Hero Header unified element -->
+    <header id="dynamic-header" class="header-container">
+        <div class="header-inner">
+            <div class="branding">
+                <div class="logo">HD-<span>Dataset</span></div>
+                <p class="tagline">High-Dimensional Experimental Physics Inference & Collection</p>
             </div>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-                <span class="theme-toggle-content">
-                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <span class="theme-label">Switch Theme</span>
-                </span>
-            </button>
+
+            <nav class="navigation">
+                <ul>
+                    <li><a href="#hero-visual">Overview</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#abstract">Abstract</a></li>
+                    <li><a href="#methodology">Methodology</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#citation">Citation</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-footer">
+                <div class="external-links">
+                    <a href="#" title="Paper PDF">📄 Paper</a>
+                    <a href="#" title="Dataset Link">💾 Data</a>
+                    <a href="#" title="GitHub Repo">💻 Code</a>
+                </div>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <span class="theme-toggle-content">
+                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <span class="theme-label">Theme</span>
+                    </span>
+                </button>
+            </div>
         </div>
-    </aside>
+    </header>
 
     <main class="main-content">
-        <section id="hero" class="hero-collage">
+        <section id="hero-visual" class="hero-section">
             <div class="collage-grid">
                 <div class="collage-item large">
                     <img src="assets/viz1.png" alt="Data Visualization 1">
@@ -78,6 +81,8 @@
                     <img src="assets/viz3.png" alt="Experimental Setup">
                 </div>
             </div>
+            <!-- Empty space to give room to the header in initial state -->
+            <div class="hero-spacer"></div>
         </section>
 
         <section id="news" class="content-section reveal">
@@ -87,7 +92,6 @@
                     <li><span class="news-date">Dec 2025</span>: Dataset v1.2 released with calibrated sensor noise
                         models.</li>
                     <li><span class="news-date">Oct 2025</span>: Paper accepted at ICML 2026.</li>
-                    <li><span class="news-date">Aug 2025</span>: Initial preliminary data collection complete.</li>
                 </ul>
             </div>
         </section>
@@ -98,10 +102,7 @@
                 <div class="abstract-content">
                     <p>Understanding high-dimensional data distributions remains a core challenge in modern experimental
                         physics and machine learning. This work presents the <strong>HD-Dataset</strong>, a meticulously
-                        curated collection of multi-modal observations designed to benchmark inference algorithms in
-                        noisy environments.</p>
-                    <p>Our dataset spans across several experimental configurations, providing over 5TB of high-fidelity
-                        data points, each accompanied by precise metadata and ground-truth simulations.</p>
+                        curated collection of multi-modal observations.</p>
                 </div>
             </div>
         </section>
@@ -112,61 +113,31 @@
                 <div class="grid-layout">
                     <div class="text-block">
                         <p>Our pipeline utilizes state-of-the-art sensors synchronized via a centralized temporal
-                            alignment system. Data is processed through a three-stage noise reduction filter before
-                            being voxelized into a 4D spatio-temporal grid.</p>
-                        <p>We provide multiple versions of the data (Raw, Processed, and Compressed) to accommodate
-                            different research needs.</p>
+                            alignment system. Data is processed through a three-stage noise reduction filter.</p>
                     </div>
                     <div class="figure-block card">
                         <div class="fig-placeholder">
                             <div class="pulse-circle"></div>
-                            <span>Interactive Process Visualization</span>
                         </div>
-                        <p class="fig-caption">Fig 1. Schematic representation of the data collection and processing
-                            pipeline.</p>
+                        <p class="fig-caption">Fig 1. Schematic representation of the pipeline.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="results" class="content-section reveal">
-            <div class="container-fluid">
-                <h2 class="section-title text-center">Benchmark Results</h2>
-                <div class="stats-grid">
-                    <div class="stat-card card">
-                        <span class="stat-value">98.4%</span>
-                        <span class="stat-label">Initial Fidelity</span>
-                    </div>
-                    <div class="stat-card card">
-                        <span class="stat-value">5.2 TB</span>
-                        <span class="stat-label">Total Data Size</span>
-                    </div>
-                    <div class="stat-card card">
-                        <span class="stat-value">12</span>
-                        <span class="stat-label">Diverse Scenarios</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="team" class="content-section reveal alternate">
+        <section id="team" class="content-section reveal">
             <div class="container-fluid">
                 <h2 class="section-title">The Team</h2>
                 <div class="team-grid">
                     <div class="team-member">
                         <div class="member-photo-placeholder">YP</div>
                         <h3>Yuri Petralia</h3>
-                        <p>Lead Researcher, AI/Physics</p>
+                        <p>Lead Researcher</p>
                     </div>
                     <div class="team-member">
                         <div class="member-photo-placeholder">JD</div>
                         <h3>Jane Doe</h3>
-                        <p>Senior Data Scientist</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-photo-placeholder">AS</div>
-                        <h3>Alex Smith</h3>
-                        <p>Software Engineer</p>
+                        <p>Data Scientist</p>
                     </div>
                 </div>
             </div>
@@ -178,7 +149,7 @@
                 <div class="citation-container card">
                     <pre><code>@article{petralia2026hdp,
   title={HD-Dataset: High-Dimensional Experimental Physics Inference},
-  author={Petralia, Yuri and Doe, Jane and Smith, Alex},
+  author={Petralia, Yuri and Doe, Jane},
   journal={Journal of Computational Science},
   year={2026},
   doi={10.1234/hd-dataset.2026.01}

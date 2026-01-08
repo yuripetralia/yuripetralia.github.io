@@ -2,9 +2,8 @@
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-// Check for saved theme
 const savedTheme = localStorage.getItem('theme') || 'light-mode';
-body.className = savedTheme;
+body.classList.add(savedTheme);
 
 themeToggle.addEventListener('click', () => {
     if (body.classList.contains('light-mode')) {
@@ -16,27 +15,39 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
-// Sidebar Active Link Highlight on Scroll
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.sidebar-nav a');
+// Scroll Transition Logic (Hero to Sidebar)
+const header = document.getElementById('dynamic-header');
+const scrollThreshold = 300; // Adjust this value for the transition speed
 
-const scrollActive = () => {
-    const scrollY = window.pageYOffset;
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
 
+    if (scrollY > scrollThreshold) {
+        if (!body.classList.contains('scrolled')) {
+            body.classList.add('scrolled');
+            body.classList.remove('init-page');
+        }
+    } else {
+        if (body.classList.contains('scrolled')) {
+            body.classList.remove('scrolled');
+            body.classList.add('init-page');
+        }
+    }
+
+    // Sidebar Active Link Highlight
+    const sections = document.querySelectorAll('section');
     sections.forEach(current => {
         const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 100;
+        const sectionTop = current.offsetTop - 150;
         const sectionId = current.getAttribute('id');
 
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelector('.sidebar-nav a[href*=' + sectionId + ']')?.classList.add('active');
+            document.querySelector('.navigation a[href*=' + sectionId + ']')?.classList.add('active');
         } else {
-            document.querySelector('.sidebar-nav a[href*=' + sectionId + ']')?.classList.remove('active');
+            document.querySelector('.navigation a[href*=' + sectionId + ']')?.classList.remove('active');
         }
     });
-};
-
-window.addEventListener('scroll', scrollActive);
+});
 
 // Scroll Reveal Animation
 const revealElements = document.querySelectorAll('.reveal');
@@ -46,15 +57,11 @@ const revealObserver = new IntersectionObserver((entries) => {
             entry.target.classList.add('active');
         }
     });
-}, {
-    threshold: 0.15
-});
+}, { threshold: 0.15 });
 
-revealElements.forEach(el => {
-    revealObserver.observe(el);
-});
+revealElements.forEach(el => revealObserver.observe(el));
 
-// Copy BibTeX Logic
+// Copy BibTeX
 const copyBtn = document.querySelector('.copy-btn');
 const citationText = document.querySelector('.citation-container code');
 
@@ -64,15 +71,7 @@ if (copyBtn) {
             .then(() => {
                 const originalText = copyBtn.innerText;
                 copyBtn.innerText = 'Copied!';
-                copyBtn.classList.add('copied');
-
-                setTimeout(() => {
-                    copyBtn.innerText = originalText;
-                    copyBtn.classList.remove('copied');
-                }, 2000);
-            })
-            .catch(err => {
-                console.error('Failed to copy: ', err);
+                setTimeout(() => copyBtn.innerText = originalText, 2000);
             });
     });
 }
