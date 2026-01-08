@@ -2,27 +2,44 @@
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-// Check for saved theme in localStorage
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    body.className = savedTheme;
-}
+// Check for saved theme
+const savedTheme = localStorage.getItem('theme') || 'light-mode';
+body.className = savedTheme;
 
 themeToggle.addEventListener('click', () => {
     if (body.classList.contains('light-mode')) {
-        body.classList.remove('light-mode');
-        body.classList.add('dark-mode');
+        body.classList.replace('light-mode', 'dark-mode');
         localStorage.setItem('theme', 'dark-mode');
     } else {
-        body.classList.remove('dark-mode');
-        body.classList.add('light-mode');
+        body.classList.replace('dark-mode', 'light-mode');
         localStorage.setItem('theme', 'light-mode');
     }
 });
 
-// Scroll Reveal Animation using Intersection Observer
-const revealElements = document.querySelectorAll('.reveal');
+// Sidebar Active Link Highlight on Scroll
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.sidebar-nav a');
 
+const scrollActive = () => {
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 100;
+        const sectionId = current.getAttribute('id');
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            document.querySelector('.sidebar-nav a[href*=' + sectionId + ']')?.classList.add('active');
+        } else {
+            document.querySelector('.sidebar-nav a[href*=' + sectionId + ']')?.classList.remove('active');
+        }
+    });
+};
+
+window.addEventListener('scroll', scrollActive);
+
+// Scroll Reveal Animation
+const revealElements = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -30,16 +47,16 @@ const revealObserver = new IntersectionObserver((entries) => {
         }
     });
 }, {
-    threshold: 0.1
+    threshold: 0.15
 });
 
 revealElements.forEach(el => {
     revealObserver.observe(el);
 });
 
-// Copy Citation Logic
+// Copy BibTeX Logic
 const copyBtn = document.querySelector('.copy-btn');
-const citationText = document.querySelector('.citation-box code');
+const citationText = document.querySelector('.citation-container code');
 
 if (copyBtn) {
     copyBtn.addEventListener('click', () => {
@@ -47,11 +64,11 @@ if (copyBtn) {
             .then(() => {
                 const originalText = copyBtn.innerText;
                 copyBtn.innerText = 'Copied!';
-                copyBtn.style.background = '#2ecc71';
-                
+                copyBtn.classList.add('copied');
+
                 setTimeout(() => {
                     copyBtn.innerText = originalText;
-                    copyBtn.style.background = '';
+                    copyBtn.classList.remove('copied');
                 }, 2000);
             })
             .catch(err => {
@@ -59,13 +76,3 @@ if (copyBtn) {
             });
     });
 }
-
-// Smooth Navbar Background Transition on Scroll
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.boxShadow = 'var(--shadow)';
-    } else {
-        navbar.style.boxShadow = 'none';
-    }
-});
