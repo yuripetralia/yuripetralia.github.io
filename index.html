@@ -15,6 +15,9 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap"
         rel="stylesheet">
 
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -33,6 +36,7 @@
                     <li><a href="#hero-visual">Overview</a></li>
                     <li><a href="#news">News</a></li>
                     <li><a href="#abstract">Abstract</a></li>
+                    <li><a href="#insights">Insights</a></li>
                     <li><a href="#methodology">Methodology</a></li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#citation">Citation</a></li>
@@ -103,6 +107,26 @@
                     <p>Understanding high-dimensional data distributions remains a core challenge in modern experimental
                         physics and machine learning. This work presents the <strong>HD-Dataset</strong>, a meticulously
                         curated collection of multi-modal observations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="insights" class="content-section reveal">
+            <div class="container-fluid">
+                <h2 class="section-title">Data Insights</h2>
+                <div class="charts-grid">
+                    <div class="chart-container card">
+                        <h3>Distribution Analysis</h3>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                    <div class="chart-container card">
+                        <h3>Performance Metrics</h3>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                    <div class="chart-container card">
+                        <h3>Temporal Trends</h3>
+                        <canvas id="lineChart"></canvas>
+                    </div>
                 </div>
             </div>
         </section>

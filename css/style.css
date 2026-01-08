@@ -290,6 +290,31 @@ body.scrolled .main-content {
     gap: 3rem;
 }
 
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.chart-container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-container h3 {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.chart-container canvas {
+    max-width: 100%;
+    height: auto !important;
+}
+
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

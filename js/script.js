@@ -75,3 +75,79 @@ if (copyBtn) {
             });
     });
 }
+
+// Chart.js initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const primaryColor = '#1a5fb4';
+    const accentColors = ['#1a5fb4', '#3584e4', '#62a0ea', '#1055a3', '#99c1f1'];
+
+    // Pie Chart
+    const ctxPie = document.getElementById('pieChart')?.getContext('2d');
+    if (ctxPie) {
+        new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['Class A', 'Class B', 'Class C', 'Other'],
+                datasets: [{
+                    data: [45, 25, 20, 10],
+                    backgroundColor: accentColors,
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+    }
+
+    // Bar Chart
+    const ctxBar = document.getElementById('barChart')?.getContext('2d');
+    if (ctxBar) {
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                datasets: [{
+                    label: 'Sample Count',
+                    data: [120, 190, 150, 210, 180],
+                    backgroundColor: primaryColor,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    }
+
+    // Line Chart
+    const ctxLine = document.getElementById('lineChart')?.getContext('2d');
+    if (ctxLine) {
+        new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['0s', '10s', '20s', '30s', '40s', '50s'],
+                datasets: [{
+                    label: 'Data Fidelity',
+                    data: [92, 95, 94, 98, 97, 99],
+                    borderColor: primaryColor,
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(26, 95, 180, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    }
+});
